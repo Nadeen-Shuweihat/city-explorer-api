@@ -1,9 +1,10 @@
+require('dotenv').config();
 const express = require("express");
-const server = express();
-const cors = require("cors");
 const weatherHandler = require("./assest/weather.json");
+const cors = require("cors");
+const server = express();
 
-const PORT = 3010;
+const PORT = process.env.PORT;
 
 server.use(cors());
 
