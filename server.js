@@ -8,3 +8,7 @@ const PORT = 3010;
 server.listen(PORT, () => {
   console.log(`listen on port ${PORT}`)
 });
+
+server.get('/',(req,res) =>{
+    res.send('test test 1 2 1 2')
+});
