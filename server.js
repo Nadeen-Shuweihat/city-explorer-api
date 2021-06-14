@@ -31,7 +31,7 @@ server.get("/weather", (req, res) => {
   } else {
     result = "Not Found";
   }
-  res.status(404).send(result);
+  res.status(500).send(result);
 });
 
 server.listen(PORT, () => {
