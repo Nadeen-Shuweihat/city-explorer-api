@@ -43,7 +43,7 @@ server.get("/weather", (req, res) => {
   .data.map((item) => {
     return new Forcast(item)
   })
-  
+  res.send(result);
  
 });
 
