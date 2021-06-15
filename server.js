@@ -50,7 +50,7 @@ server.get("/weather", (req, res) => {
 server.get('*', (req,res) => {
   res.status(200).send('Sorry , not valid');
   
-
+})
   
 
 server.listen(PORT, () => {
