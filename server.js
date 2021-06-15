@@ -1,4 +1,4 @@
-require('dotenv').config();
+require("dotenv").config();
 const express = require("express");
 const weatherHandler = require("./assest/weather.json");
 const cors = require("cors");
@@ -31,11 +31,11 @@ server.get("/weather", (req, res) => {
     result = weatherHandler.data;
     console.log(result);
   } else {
-    result = "Not Found";
+    res.status(500).send("error");
+    // result = "Not Found";
   }
 
   res.status(200).send(result);
-
 });
 
 server.listen(PORT, () => {
