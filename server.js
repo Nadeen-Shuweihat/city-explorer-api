@@ -1,9 +1,10 @@
+require ('dotenv').config();
 const express = require("express");
 const server = express();
 const cors = require("cors");
 const weatherHandler = require("./assest/weather.json");
 
-const PORT = 3010;
+const PORT = process.env.PORT;
 
 server.use(cors());
 
@@ -16,23 +17,36 @@ server.get("/weatherAll", (req, res) => {
 });
 
 server.get("/weather", (req, res) => {
-  let lat = req.query.lat;
-  let lon = req.query.lon;
+  // let lat = req.query.lat;
+  // let lon = req.query.lon;
   let searchQuery = req.query.searchQuery;
   console.log(weatherHandler.city_name);
 
-  let result = "";
-  if (
-    lat == weatherHandler.lat &&
-    lon == weatherHandler.lon &&
-    searchQuery == weatherHandler.city_name
-  ) {
-    result = weatherHandler.data;
-    console.log(result);
-  } else {
-    result = "Not Found";
+  
+  class Forcast {
+    constructor(day){
+      (this.description = day.weather.description),
+      (this.date = day.valid_date) 
+    }
   }
-  res.status(200).send(result);
+  
+  let result = weatherHandler
+  .find((item) => {
+    if (searchQuery == item.city_name){
+      return item
+    }
+  })
+  
+  .data.map((item) => {
+    return new Forcast(item)
+  })
+  
+ 
+});
+
+server.get('*', (req,res) => {
+  res.status(200).send('Sorry , not valid');
+  
 });
 
 server.listen(PORT, () => {
