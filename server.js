@@ -34,14 +34,14 @@ server.get("/weather", (req, res) => {
   }
   
   let result = weatherHandler
-  .find((item) => {
-    if (searchQuery == item.city_name){
-      return item
+  .find((day) => {
+    if (searchQuery == day.city_name){
+      return day
     }
   })
   
-  .data.map((item) => {
-    return new Forcast(item)
+  .data.map((day) => {
+    return new Forcast(day)
   })
   res.send(result);
  
