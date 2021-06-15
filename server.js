@@ -29,7 +29,7 @@ server.get("/weather", (req, res) => {
   class Forcast {
     constructor(day){
       (this.description = day.weather.description),
-      (this.date = day.valid_date) 
+      (this.valid_date = day.valid_date) 
     }
   }
   
