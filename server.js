@@ -20,6 +20,7 @@ server.get("/weather", (req, res) => {
   let lat = req.query.lat;
   let lon = req.query.lon;
   let searchQuery = req.query.searchQuery;
+  console.log(weatherHandler.city_name);
 
   let result = "";
   if (
@@ -28,10 +29,13 @@ server.get("/weather", (req, res) => {
     searchQuery == weatherHandler.city_name
   ) {
     result = weatherHandler.data;
+    console.log(result);
   } else {
     result = "Not Found";
   }
-  res.status(500).send(result);
+
+  res.status(200).send(result);
+
 });
 
 server.listen(PORT, () => {
