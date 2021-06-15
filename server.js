@@ -1,8 +1,10 @@
+
 require ('dotenv').config();
+
 const express = require("express");
-const server = express();
-const cors = require("cors");
 const weatherHandler = require("./assest/weather.json");
+const cors = require("cors");
+const server = express();
 
 const PORT = process.env.PORT;
 
@@ -21,6 +23,7 @@ server.get("/weather", (req, res) => {
   // let lon = req.query.lon;
   let searchQuery = req.query.searchQuery;
   console.log(weatherHandler.city_name);
+
 
   
   class Forcast {
@@ -47,7 +50,8 @@ server.get("/weather", (req, res) => {
 server.get('*', (req,res) => {
   res.status(200).send('Sorry , not valid');
   
-});
+
+  
 
 server.listen(PORT, () => {
   console.log(`listen on port ${PORT}`);
