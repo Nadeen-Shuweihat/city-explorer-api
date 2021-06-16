@@ -4,7 +4,7 @@ const cors = require("cors");
 const weatherHandler=require("./assest/weather.json")
 const weatherOne = require('./Modules/Weather');
 const weatherTwo = require('./Modules/Weather')
-
+const MovieFunction = require('./Modules/Movies')
 
 const server = express();
 server.use(cors());
@@ -21,7 +21,9 @@ server.get("/weatherAll", (req, res) => {
 });
 
 server.get("/weather", weatherOne);
-server.get('/weather2', weatherTwo)
+server.get('/weather2', weatherTwo);
+server.get('/movies', MovieFunction);
+
 
 server.get('*', (req,res) => {
   res.status(200).send('Sorry , not valid');
