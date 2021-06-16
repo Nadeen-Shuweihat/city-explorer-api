@@ -2,23 +2,18 @@ const axios = require('axios');
 const { response } = require('express');
 const weatherHandler = require("../assest/weather.json");
 
-
-class Forcast {
-  constructor(day){
-    (this.description = day.weather.description),
-    (this.valid_date = day.valid_date) 
-  }
+class Data {
+    constructor(item){
+        this.valid_date = item.valid_date,
+        this.description = item.weather.description;
+    }
 }
 
 
 function weatherOne (req, res) {
-    // let lat = req.query.lat;
-    // let lon = req.query.lon;
+   
     let result = '';
     let searchQuery = req.query.searchQuery;
-    console.log(weatherHandler[0].city_name);
-  
-  
     
     result = weatherHandler
     .find((day) => {
@@ -28,7 +23,7 @@ function weatherOne (req, res) {
     })
     
     .data.map((day) => {
-      return new Forcast(day)
+      return new Data(day)
     })
     res.send(result);
    
@@ -43,7 +38,17 @@ function weatherTwo (req,res){
     axios.get(url)
     .then((response) =>{
         console.log(response.data);
+
+        let result = response.data.data.map((item) => {
+         return new Data(item);
+        });
+
+        res.send(result);
     })
+ 
+     
+    
 }
 
 module.exports = weatherOne ;
+module.exports = weatherTwo ;
