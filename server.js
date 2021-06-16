@@ -21,8 +21,9 @@ server.get("/weatherAll", (req, res) => {
 server.get("/weather", (req, res) => {
   // let lat = req.query.lat;
   // let lon = req.query.lon;
+  let result = '';
   let searchQuery = req.query.searchQuery;
-  console.log(weatherHandler.city_name);
+  console.log(weatherHandler[0].city_name);
 
 
   
@@ -33,7 +34,7 @@ server.get("/weather", (req, res) => {
     }
   }
   
-  let result = weatherHandler
+  result = weatherHandler
   .find((day) => {
     if (searchQuery == day.city_name){
       return day
