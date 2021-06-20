@@ -38,7 +38,7 @@ function weatherTwo (req,res){
     axios.get(url)
     .then((response) =>{
         console.log(response.data);
-
+       
         let result = response.data.data.map((item) => {
          return new Data(item);
         });
