@@ -1,4 +1,4 @@
-# Project Name
+# User Authentication with Auth0
 
 **Author**: Your Name Goes Here
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
@@ -23,7 +23,7 @@
 
 ## Credit and Collaborations
 
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
+
 
 Name of feature: **************\_\_\_\_**************
 
